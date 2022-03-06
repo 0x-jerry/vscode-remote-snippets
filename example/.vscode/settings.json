@@ -1,0 +1,8 @@
+{
+  "remote-snippets.snippets": [
+    {
+      "url": "https://raw.githubusercontent.com/hollowtree/vscode-vue-snippets/master/snippets/html.json",
+      "language": "vue"
+    }
+  ]
+}
