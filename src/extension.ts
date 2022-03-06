@@ -20,6 +20,9 @@ export async function activate(context: ExtensionContext) {
 
   context.subscriptions.push(
     commands.registerCommand('remote-snippets.refresh', () => {
+      provider.clear()
+      apiCache.clear()
+
       cacheRemoteSnippets(provider)
     }),
   )

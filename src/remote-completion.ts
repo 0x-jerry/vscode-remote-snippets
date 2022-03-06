@@ -8,7 +8,6 @@ import {
 import { VscodeSchemasGlobalSnippets } from './types'
 import { toArray } from '@0x-jerry/utils'
 
-
 export class RemoteCompletionItemProvider implements CompletionItemProvider {
   configs = new Map<
     string,
@@ -23,6 +22,10 @@ export class RemoteCompletionItemProvider implements CompletionItemProvider {
       language,
       snippet,
     })
+  }
+
+  clear() {
+    this.configs.clear()
   }
 
   provideCompletionItems(): CompletionItem[] {
