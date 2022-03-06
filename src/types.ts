@@ -21,7 +21,7 @@ export interface VscodeSchemasGlobalSnippets {
 
 export interface SnippetConfig {
   url: string
-  language: string
+  language?: string
 }
 
 export interface RemoteSnippetsConfig {

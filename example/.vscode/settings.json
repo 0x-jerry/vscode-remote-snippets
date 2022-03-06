@@ -7,5 +7,8 @@
   ],
   "remote-snippets.config": [
     "https://raw.githubusercontent.com/0x-jerry/snippets/main/snippets-config.json"
-  ]
+  ],
+  "[markdown]": {
+    "editor.quickSuggestions": true
+  },
 }

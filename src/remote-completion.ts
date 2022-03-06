@@ -4,23 +4,23 @@ import {
   CompletionItemProvider,
   MarkdownString,
   SnippetString,
+  TextDocument,
 } from 'vscode'
 import { VscodeSchemasGlobalSnippets } from './types'
 import { toArray } from '@0x-jerry/utils'
 
-export class RemoteCompletionItemProvider implements CompletionItemProvider {
-  configs = new Map<
-    string,
-    {
-      snippet: VscodeSchemasGlobalSnippets
-      language: string
-    }
-  >()
+interface SnippetConfig {
+  snippet: VscodeSchemasGlobalSnippets
+  language?: string
+}
 
-  add(url: string, language: string, snippet: VscodeSchemasGlobalSnippets) {
+export class RemoteCompletionItemProvider implements CompletionItemProvider {
+  configs = new Map<string, SnippetConfig>()
+
+  add(url: string, snippet: VscodeSchemasGlobalSnippets, language?: string) {
     this.configs.set(url, {
-      language,
       snippet,
+      language,
     })
   }
 
@@ -28,25 +28,30 @@ export class RemoteCompletionItemProvider implements CompletionItemProvider {
     this.configs.clear()
   }
 
-  provideCompletionItems(): CompletionItem[] {
+  provideCompletionItems(document: TextDocument): CompletionItem[] {
     const items: CompletionItem[] = []
+
+    const docLang = document.languageId
 
     for (const conf of this.configs.values()) {
       const list = Object.entries(conf.snippet)
-        .filter(
-          ([_name, w]) => w.scope == null || w.scope.includes(conf.language),
+        .filter(([_name, w]) =>
+          conf.language
+            ? conf.language.includes(docLang)
+            : w.scope
+            ? w.scope.includes(docLang)
+            : true,
         )
-        .map(([name, i]) => {
-          const item = new CompletionItem(name)
+        .map(([title, snippet]) => {
+          const item = new CompletionItem(title)
           item.kind = CompletionItemKind.Snippet
 
-          const code = toArray(i.body).join('\n')
-          const snippet = new SnippetString(code)
+          const code = toArray(snippet.body).join('\n')
 
-          item.insertText = snippet
+          item.insertText = new SnippetString(code)
 
           const documentation = [
-            i.description,
+            toArray(snippet.description).join('\n') || title,
             '',
             '```' + conf.language,
             code,
