@@ -1,3 +1,12 @@
+## [0.1.3](https://github.com/0x-jerry/vscode-remote-snippets/compare/v0.1.2...v0.1.3) (2022-03-06)
+
+
+### Performance Improvements
+
+* add activation events ([02a9471](https://github.com/0x-jerry/vscode-remote-snippets/commit/02a9471ff5ea45edfe3ea7ad195d4425b4b2d5ec))
+
+
+
 ## [0.1.2](https://github.com/0x-jerry/vscode-remote-snippets/compare/v0.1.1...v0.1.2) (2022-03-06)
 
 
