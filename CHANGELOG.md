@@ -1,3 +1,12 @@
+## [0.1.2](https://github.com/0x-jerry/vscode-remote-snippets/compare/v0.1.1...v0.1.2) (2022-03-06)
+
+
+### Bug Fixes
+
+* save cache config ([35ba20b](https://github.com/0x-jerry/vscode-remote-snippets/commit/35ba20bf1ab839016ce2a9df812891abdefa7db6))
+
+
+
 ## [0.1.1](https://github.com/0x-jerry/vscode-remote-snippets/compare/v0.1.0...v0.1.1) (2022-03-06)
 
 
