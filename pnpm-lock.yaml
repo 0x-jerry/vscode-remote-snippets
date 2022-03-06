@@ -5,6 +5,7 @@ specifiers:
   '@0x-jerry/x-release': ^0.3.2
   '@types/debounce': ^1.2.1
   '@types/debug': ^4.1.7
+  '@types/fs-extra': ^9.0.13
   '@types/node': ^15.14.9
   '@types/vscode': ^1.41.1
   ajv: ^8.10.0
@@ -14,7 +15,9 @@ specifiers:
   debounce: ^1.2.1
   debug: ^4.3.3
   form-data: ^4.0.0
+  fs-extra: ^10.0.1
   https-proxy-agent: ^5.0.0
+  md5: ^2.3.0
   tsup: ^5.11.11
   typescript: ^4.5.5
   vsce: ^2.6.7
@@ -24,6 +27,7 @@ devDependencies:
   '@0x-jerry/x-release': registry.npmmirror.com/@0x-jerry/x-release/0.3.2
   '@types/debounce': registry.npmmirror.com/@types/debounce/1.2.1
   '@types/debug': registry.npmmirror.com/@types/debug/4.1.7
+  '@types/fs-extra': registry.npmmirror.com/@types/fs-extra/9.0.13
   '@types/node': registry.npmmirror.com/@types/node/15.14.9
   '@types/vscode': registry.npmmirror.com/@types/vscode/1.65.0
   ajv: registry.npmmirror.com/ajv/8.10.0
@@ -33,7 +37,9 @@ devDependencies:
   debounce: registry.npmmirror.com/debounce/1.2.1
   debug: registry.npmmirror.com/debug/4.3.3
   form-data: registry.npmmirror.com/form-data/4.0.0
+  fs-extra: registry.npmmirror.com/fs-extra/10.0.1
   https-proxy-agent: registry.npmmirror.com/https-proxy-agent/5.0.0
+  md5: registry.npmmirror.com/md5/2.3.0
   tsup: registry.npmmirror.com/tsup/5.11.13_typescript@4.6.2
   typescript: registry.npmmirror.com/typescript/4.6.2
   vsce: registry.npmmirror.com/vsce/2.6.7
@@ -52,6 +58,18 @@ packages:
     dependencies:
       '@nodelib/fs.stat': registry.npmmirror.com/@nodelib/fs.stat/2.0.5
       run-parallel: registry.npmmirror.com/run-parallel/1.2.0
+    dev: true
+
+  registry.nlark.com/charenc/0.0.2:
+    resolution: {integrity: sha1-wKHS86cJLgN3S/qD8UwPxXkKhmc=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/charenc/download/charenc-0.0.2.tgz}
+    name: charenc
+    version: 0.0.2
+    dev: true
+
+  registry.nlark.com/crypt/0.0.2:
+    resolution: {integrity: sha1-iNf/fsDfuG9xPch7u0LQRNPmxBs=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/crypt/download/crypt-0.0.2.tgz}
+    name: crypt
+    version: 0.0.2
     dev: true
 
   registry.npmmirror.com/@0x-jerry/utils/1.1.1:
@@ -150,6 +168,14 @@ packages:
     version: 4.1.7
     dependencies:
       '@types/ms': registry.npmmirror.com/@types/ms/0.7.31
+    dev: true
+
+  registry.npmmirror.com/@types/fs-extra/9.0.13:
+    resolution: {integrity: sha512-nEnwB++1u5lVDM2UI4c1+5R+FYaKfaAzS4OococimjVm3nQw3TuzH5UNsocrcTBbhnerblyHj4A49qXbIiZdpA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@types/fs-extra/-/fs-extra-9.0.13.tgz}
+    name: '@types/fs-extra'
+    version: 9.0.13
+    dependencies:
+      '@types/node': registry.npmmirror.com/@types/node/15.14.9
     dev: true
 
   registry.npmmirror.com/@types/minimist/1.2.2:
@@ -1406,6 +1432,17 @@ packages:
     version: 1.0.0
     dev: true
 
+  registry.npmmirror.com/fs-extra/10.0.1:
+    resolution: {integrity: sha512-NbdoVMZso2Lsrn/QwLXOy6rm0ufY2zEOKCDzJR/0kBsb0E6qed0P3iYK+Ath3BfvXEeu4JhEtXLgILx5psUfag==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/fs-extra/-/fs-extra-10.0.1.tgz}
+    name: fs-extra
+    version: 10.0.1
+    engines: {node: '>=12'}
+    dependencies:
+      graceful-fs: registry.npmmirror.com/graceful-fs/4.2.9
+      jsonfile: registry.npmmirror.com/jsonfile/6.1.0
+      universalify: registry.npmmirror.com/universalify/2.0.0
+    dev: true
+
   registry.npmmirror.com/fs.realpath/1.0.0:
     resolution: {integrity: sha512-OO0pH2lK6a0hZnAdau5ItzHPI6pUlvI7jMVnxUQRtw4owF2wk8lOSabtGDCTP4Ggrg2MbGnWO9X8K1t4+fGMDw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/fs.realpath/-/fs.realpath-1.0.0.tgz}
     name: fs.realpath
@@ -1736,6 +1773,12 @@ packages:
       binary-extensions: registry.npmmirror.com/binary-extensions/2.2.0
     dev: true
 
+  registry.npmmirror.com/is-buffer/1.1.6:
+    resolution: {integrity: sha512-NcdALwpXkTm5Zvvbk7owOUSvVvBKDgKP5/ewfXEznmQFfs4ZRmanOeKBTjRVjka3QFoN6XJ+9F3USqfHqTaU5w==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/is-buffer/-/is-buffer-1.1.6.tgz}
+    name: is-buffer
+    version: 1.1.6
+    dev: true
+
   registry.npmmirror.com/is-core-module/2.8.1:
     resolution: {integrity: sha512-SdNCUs284hr40hFTFP6l0IfZ/RSrMXF3qgoRHd3/79unUTvrFO/JoXwkGm+5J/Oe3E/b5GsnG330uUNgRpu1PA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/is-core-module/-/is-core-module-2.8.1.tgz}
     name: is-core-module
@@ -1867,6 +1910,16 @@ packages:
     resolution: {integrity: sha512-ZClg6AaYvamvYEE82d3Iyd3vSSIjQ+odgjaTzRuO3s7toCdFKczob2i0zCh7JE8kWn17yvAWhUVxvqGwUalsRA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/json-stringify-safe/-/json-stringify-safe-5.0.1.tgz}
     name: json-stringify-safe
     version: 5.0.1
+    dev: true
+
+  registry.npmmirror.com/jsonfile/6.1.0:
+    resolution: {integrity: sha512-5dgndWOriYSm5cnYaJNhalLNDKOqFwyDB/rr1E9ZsGciGvKPs8R2xYGCacuf3z6K1YKDz182fd+fY3cn3pMqXQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/jsonfile/-/jsonfile-6.1.0.tgz}
+    name: jsonfile
+    version: 6.1.0
+    dependencies:
+      universalify: registry.npmmirror.com/universalify/2.0.0
+    optionalDependencies:
+      graceful-fs: registry.npmmirror.com/graceful-fs/4.2.9
     dev: true
 
   registry.npmmirror.com/jsonparse/1.3.1:
@@ -2012,6 +2065,16 @@ packages:
       linkify-it: registry.npmmirror.com/linkify-it/3.0.3
       mdurl: registry.npmmirror.com/mdurl/1.0.1
       uc.micro: registry.npmmirror.com/uc.micro/1.0.6
+    dev: true
+
+  registry.npmmirror.com/md5/2.3.0:
+    resolution: {integrity: sha512-T1GITYmFaKuO91vxyoQMFETst+O71VUPEU3ze5GNzDm0OWdP8v1ziTaAEPUr/3kLsY3Sftgz242A1SetQiDL7g==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/md5/-/md5-2.3.0.tgz}
+    name: md5
+    version: 2.3.0
+    dependencies:
+      charenc: registry.nlark.com/charenc/0.0.2
+      crypt: registry.nlark.com/crypt/0.0.2
+      is-buffer: registry.npmmirror.com/is-buffer/1.1.6
     dev: true
 
   registry.npmmirror.com/mdurl/1.0.1:
@@ -3280,6 +3343,13 @@ packages:
     resolution: {integrity: sha512-ekY1NhRzq0B08g4bGuX4wd2jZx5GnKz6mKSqFL4nqBlfyMGiG10gDFhDTMEfYmDL6Jy0FUIZp7wiRB+0BP7J2g==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/underscore/-/underscore-1.13.2.tgz}
     name: underscore
     version: 1.13.2
+    dev: true
+
+  registry.npmmirror.com/universalify/2.0.0:
+    resolution: {integrity: sha512-hAZsKq7Yy11Zu1DE0OzWjw7nnLZmJZYTDZZyEFHZdUhV8FkH5MCfoU1XMaxXovpyW5nq5scPqq0ZDP9Zyl04oQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/universalify/-/universalify-2.0.0.tgz}
+    name: universalify
+    version: 2.0.0
+    engines: {node: '>= 10.0.0'}
     dev: true
 
   registry.npmmirror.com/uri-js/4.4.1:

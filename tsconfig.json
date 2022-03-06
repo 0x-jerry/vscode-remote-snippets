@@ -4,6 +4,7 @@
     "esModuleInterop": true,
     "target": "ES2015",
     "module": "CommonJS",
+    "lib": ["ESNext"],
     "resolveJsonModule": true
   }
 }

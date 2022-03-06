@@ -1,10 +1,5 @@
 /**
  * User snippet configuration
- *
- * https://transform.tools/json-schema-to-typescript
- */
-/**
- * User snippet configuration
  */
 export interface VscodeSchemasGlobalSnippets {
   [k: string]: {
@@ -22,4 +17,13 @@ export interface VscodeSchemasGlobalSnippets {
      */
     scope?: string
   }
+}
+
+export interface SnippetConfig {
+  url: string
+  language: string
+}
+
+export interface RemoteSnippetsConfig {
+  snippets: SnippetConfig[]
 }

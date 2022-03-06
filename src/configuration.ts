@@ -1,13 +1,13 @@
 import { workspace } from 'vscode'
+import { SnippetConfig } from './types'
 
-interface SnippetConfig {
-  url: string
-  language: string
-}
-
-export const snippetsConfig = () => {
+function getConf<T>(key: string): T | undefined
+function getConf<T>(key: string, defaultValue: T): T
+function getConf<T>(key: string, defaultValue?: T) {
   const config = workspace.getConfiguration('remote-snippets')
-  const snippets = config.get<SnippetConfig[]>('snippets') || []
-
-  return snippets
+  return config.get(key, defaultValue)
 }
+
+export const remoteSnippets = () => getConf<SnippetConfig[]>('snippets', [])
+
+export const remoteSnippetsConfigs = () => getConf<string[]>('config', [])
