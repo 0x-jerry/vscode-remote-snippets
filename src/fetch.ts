@@ -80,6 +80,7 @@ class Cache {
     this.conf[url] = hash
 
     await fs.writeFile(join(cachePath, hash), value)
+    this.save()
   }
 
   async clear() {

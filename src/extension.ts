@@ -34,5 +34,6 @@ export async function activate(context: ExtensionContext) {
 }
 
 export async function deactivate(): Promise<void> {
+  await apiCache.save()
   console.log('deactivate')
 }
