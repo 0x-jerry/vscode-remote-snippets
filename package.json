@@ -64,7 +64,8 @@
     "commands": [
       {
         "command": "remote-snippets.refresh",
-        "title": "Fetch remote snippets"
+        "category": "Remote Snippets",
+        "title": "Update snippets"
       }
     ],
     "keybindings": [],
