@@ -10,13 +10,13 @@ Just add some remote urls to config.
 {
   "remote-snippets.snippets": [
     {
-      "url": "https://raw.githubusercontent.com/hollowtree/vscode-vue-snippets/master/snippets/html.json",
+      "path": "https://raw.githubusercontent.com/hollowtree/vscode-vue-snippets/master/snippets/html.json",
       "language": "vue"
     }
   ],
   "remote-snippets.config": [
-    "https://raw.githubusercontent.com/0x-jerry/snippets/main/snippets-config.json"
-  ]
+    "https://raw.githubusercontent.com/0x-jerry/snippets/main/package.json",
+  ],
 }
 ```
 

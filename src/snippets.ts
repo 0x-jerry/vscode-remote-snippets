@@ -36,7 +36,7 @@ export async function fetchSnippet(
   url: string,
 ): Promise<false | VscodeSchemasGlobalSnippets> {
   try {
-    const data = fetchJson(url)
+    const data = await fetchJson(url)
 
     if (!(await isValidSnippet(data))) {
       return false
@@ -62,34 +62,36 @@ export async function cacheRemoteSnippets(
   const allSnippets = [...snippets, ...allConfigs.flat()]
 
   for (const config of allSnippets) {
-    const snippet = await fetchSnippet(config.url)
+    const snippet = await fetchSnippet(config.path)
 
     if (!snippet) {
       continue
     }
 
-    provider.add(config.url, snippet, config.language)
+    provider.add(config.path, snippet, config.language)
   }
 }
 
 async function resolveRemoteSnippetConfig(
   remoteConfigUrl: string,
 ): Promise<SnippetConfig[]> {
-  const r = await fetchJson<Partial<RemoteSnippetsConfig>>(remoteConfigUrl)
+  const r = await fetchJson<RemoteSnippetsConfig>(remoteConfigUrl)
 
   const root = Uri.joinPath(Uri.parse(remoteConfigUrl), '..')
 
   const isUrl = /^https?:\/\//
 
-  const snippets: SnippetConfig[] = []
+  const snippetConfigs: SnippetConfig[] = []
 
-  for (const snippet of r.snippets || []) {
-    if (!isUrl.test(snippet.url)) {
-      snippet.url = Uri.joinPath(root, snippet.url).toString()
+  const remoteSnippetConfigs = r.contributes?.snippets || []
+
+  for (const snippetConfig of remoteSnippetConfigs) {
+    if (!isUrl.test(snippetConfig.path)) {
+      snippetConfig.path = Uri.joinPath(root, snippetConfig.path).toString()
     }
 
-    snippets.push(snippet)
+    snippetConfigs.push(snippetConfig)
   }
 
-  return snippets
+  return snippetConfigs
 }

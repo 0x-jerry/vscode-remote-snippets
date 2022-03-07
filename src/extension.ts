@@ -1,4 +1,4 @@
-import { commands, ExtensionContext, languages, Uri } from 'vscode'
+import { commands, ExtensionContext, languages, Uri, workspace } from 'vscode'
 import { apiCache } from './fetch'
 import { RemoteCompletionItemProvider } from './remote-completion'
 import { cacheRemoteSnippets } from './snippets'
@@ -25,9 +25,20 @@ export async function activate(context: ExtensionContext) {
 
   context.subscriptions.push(
     commands.registerCommand('remote-snippets.refresh', () => {
-      provider.clear()
       apiCache.clear()
+      provider.clear()
 
+      cacheRemoteSnippets(provider)
+    }),
+  )
+
+  context.subscriptions.push(
+    workspace.onDidChangeConfiguration((e) => {
+      if (!e.affectsConfiguration('remote-snippets')) {
+        return
+      }
+
+      provider.clear()
       cacheRemoteSnippets(provider)
     }),
   )

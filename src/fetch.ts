@@ -6,6 +6,7 @@ import { homedir } from 'os'
 import fs from 'fs-extra'
 import { md5 } from './utils'
 import { debounce } from 'debounce'
+import { assert } from '@0x-jerry/utils'
 
 function getProxy() {
   const conf = workspace.getConfiguration('http')

@@ -20,10 +20,12 @@ export interface VscodeSchemasGlobalSnippets {
 }
 
 export interface SnippetConfig {
-  url: string
+  path: string
   language?: string
 }
 
 export interface RemoteSnippetsConfig {
-  snippets: SnippetConfig[]
+  contributes?: {
+    snippets?: SnippetConfig[]
+  }
 }
