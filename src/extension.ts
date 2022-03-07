@@ -1,7 +1,9 @@
 import { commands, ExtensionContext, languages, workspace } from 'vscode'
+import { Commands } from './const'
 import { apiCache } from './fetch'
 import { RemoteCompletionItemProvider } from './remote-completion'
 import { cacheRemoteSnippets } from './snippets'
+import { statusBar } from './statusBar'
 
 export async function activate(context: ExtensionContext) {
   console.log('activate')
@@ -11,6 +13,8 @@ export async function activate(context: ExtensionContext) {
   const provider = new RemoteCompletionItemProvider()
 
   cacheRemoteSnippets(provider)
+
+  context.subscriptions.push(statusBar.instance)
 
   const supportedLang = ['vue', 'typescript', 'javascript', 'markdown']
 
@@ -24,7 +28,7 @@ export async function activate(context: ExtensionContext) {
   )
 
   context.subscriptions.push(
-    commands.registerCommand('remote-snippets.refresh', () => {
+    commands.registerCommand(Commands.Refresh, () => {
       apiCache.clear()
       provider.clear()
 

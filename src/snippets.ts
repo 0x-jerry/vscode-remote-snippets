@@ -9,6 +9,7 @@ import { fetchJson } from './fetch'
 import { Uri } from 'vscode'
 import { remoteSnippets, remoteSnippetsConfigs } from './configuration'
 import { RemoteCompletionItemProvider } from './remote-completion'
+import { statusBar } from './statusBar'
 
 let validate: ValidateFunction
 
@@ -55,15 +56,21 @@ export async function cacheRemoteSnippets(
   const snippets = remoteSnippets()
   const configs = remoteSnippetsConfigs()
 
+  statusBar.loading()
+
   const allConfigs = await Promise.all(
     configs.map((confUrl) => resolveRemoteSnippetConfig(confUrl)),
   )
 
   const allSnippets = [...snippets, ...allConfigs.flat()]
 
+  let progress = 0
+  statusBar.updateProgress(progress, allSnippets.length)
   for (const config of allSnippets) {
     const snippet = await fetchSnippet(config.path)
 
+    statusBar.updateProgress(++progress, allSnippets.length)
+    
     if (!snippet) {
       continue
     }
