@@ -1,3 +1,12 @@
+# [0.2.0](https://github.com/0x-jerry/vscode-remote-snippets/compare/v0.1.5...v0.2.0) (2022-03-07)
+
+
+### Bug Fixes
+
+* re-fetch remote snippets ([69a185c](https://github.com/0x-jerry/vscode-remote-snippets/commit/69a185c825b98162fd3480f51fad5da67b1fd0db))
+
+
+
 ## [0.1.5](https://github.com/0x-jerry/vscode-remote-snippets/compare/v0.1.4...v0.1.5) (2022-03-06)
 
 
