@@ -1,4 +1,4 @@
-import { commands, ExtensionContext, languages, Uri, workspace } from 'vscode'
+import { commands, ExtensionContext, languages, workspace } from 'vscode'
 import { apiCache } from './fetch'
 import { RemoteCompletionItemProvider } from './remote-completion'
 import { cacheRemoteSnippets } from './snippets'
