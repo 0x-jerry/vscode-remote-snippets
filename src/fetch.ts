@@ -34,9 +34,10 @@ class Cache {
     if (!this.conf) {
       this.conf = {}
 
-      if (await fs.pathExists(this.confPath)) {
-        const txt = await fs.readFile(this.confPath, { encoding: 'utf-8' })
-        this.conf = JSON.parse(txt)
+      try {
+        this.conf = await fs.readJson(this.confPath)
+      } catch (error) {
+        this.conf = {}
       }
     }
 
@@ -44,9 +45,11 @@ class Cache {
     return this.conf
   }
 
-  save = debounce(async () => {
-    await fs.writeFile(this.confPath, JSON.stringify(this.conf))
-  }, 200)
+  save = debounce(() => this.saveSync(), 200)
+
+  saveSync() {
+    fs.writeFileSync(this.confPath, JSON.stringify(this.conf))
+  }
 
   has(url: string) {
     return !!this.conf[url]
@@ -63,7 +66,8 @@ class Cache {
       return
     }
 
-    const res = await fs.readFile(p, { encoding: 'utf-8' })
+    const res = await fs.readJSON(p)
+
     return res
   }
 
@@ -98,9 +102,9 @@ export async function fetchJson<T = any>(
   const proxy = getProxy()
 
   if (cache && apiCache.has(url)) {
-    const data = (await apiCache.get(url))!
+    const data = await apiCache.get(url)
 
-    return JSON.parse(data)
+    return data
   }
 
   const { data } = await axios.get(url, {
