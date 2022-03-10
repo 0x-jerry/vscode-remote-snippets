@@ -1,6 +1,6 @@
 {
   "name": "vscode-remote-snippets",
-  "displayName": "Vscode Remote Snippets",
+  "displayName": "Remote Snippets",
   "description": "Auto fetch snippets from remote and load it.",
   "version": "0.2.0",
   "license": "MIT",
