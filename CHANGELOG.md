@@ -1,3 +1,12 @@
+## [0.2.2](https://github.com/0x-jerry/vscode-remote-snippets/compare/v0.2.1...v0.2.2) (2022-03-20)
+
+
+### Performance Improvements
+
+* use prefix as label ([1f288e0](https://github.com/0x-jerry/vscode-remote-snippets/commit/1f288e0e3a1e426c95ce0b563b507b52104e7836))
+
+
+
 ## [0.2.1](https://github.com/0x-jerry/vscode-remote-snippets/compare/v0.2.0...v0.2.1) (2022-03-10)
 
 
