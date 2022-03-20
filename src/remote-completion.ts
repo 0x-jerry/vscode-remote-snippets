@@ -43,8 +43,11 @@ export class RemoteCompletionItemProvider implements CompletionItemProvider {
             : true,
         )
         .map(([title, snippet]) => {
-          const item = new CompletionItem(title)
-          item.kind = CompletionItemKind.Snippet
+          const label: string = toArray(snippet.prefix)[0] || title
+
+          const item = new CompletionItem(label, CompletionItemKind.Snippet)
+
+          item.detail = title
 
           const code = toArray(snippet.body).join('\n')
 
