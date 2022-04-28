@@ -37,24 +37,31 @@
       "properties": {
         "remote-snippets.snippets": {
           "type": "array",
-          "description": "Remote snippets",
+          "description": "Remote snippets.",
           "items": {
             "type": "object",
             "properties": {
               "url": {
                 "type": "string",
-                "description": "Remote snippet url"
+                "description": "Remote snippet url."
               },
               "language": {
                 "type": "string",
-                "description": "Program language the snippet applied to."
+                "description": "Specify the language that the snippet applied to."
               }
             }
           }
         },
         "remote-snippets.config": {
           "type": "array",
-          "description": "Remote snippets config",
+          "description": "Remote snippets configuration.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "remote-snippets.js": {
+          "type": "array",
+          "description": "Those local js file will be loaded dynamically.",
           "items": {
             "type": "string"
           }
@@ -87,7 +94,7 @@
     "vscode": "*"
   },
   "devDependencies": {
-    "@0x-jerry/utils": "^1.1.1",
+    "@0x-jerry/utils": "^1.7.1",
     "@0x-jerry/x-release": "^0.3.2",
     "@types/debounce": "^1.2.1",
     "@types/debug": "^4.1.7",

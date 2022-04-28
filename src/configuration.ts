@@ -11,3 +11,9 @@ function getConf<T>(key: string, defaultValue?: T) {
 export const remoteSnippets = () => getConf<SnippetConfig[]>('snippets', [])
 
 export const remoteSnippetsConfigs = () => getConf<string[]>('config', [])
+
+/**
+ *
+ * @returns js files
+ */
+export const localJSConfigs = () => getConf<string[]>('js', [])

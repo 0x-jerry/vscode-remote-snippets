@@ -6,19 +6,19 @@ import {
   SnippetString,
   TextDocument,
 } from 'vscode'
-import { VscodeSchemasGlobalSnippets } from './types'
-import { toArray } from '@0x-jerry/utils'
+import { VSCodeSchemasGlobalSnippets } from './types'
+import { is, toArray } from '@0x-jerry/utils'
 
 interface SnippetConfig {
-  snippet: VscodeSchemasGlobalSnippets
+  snippet: VSCodeSchemasGlobalSnippets
   language?: string
 }
 
 export class RemoteCompletionItemProvider implements CompletionItemProvider {
   configs = new Map<string, SnippetConfig>()
 
-  add(url: string, snippet: VscodeSchemasGlobalSnippets, language?: string) {
-    this.configs.set(url, {
+  add(id: string, snippet: VSCodeSchemasGlobalSnippets, language?: string) {
+    this.configs.set(id, {
       snippet,
       language,
     })
@@ -49,7 +49,9 @@ export class RemoteCompletionItemProvider implements CompletionItemProvider {
 
           item.detail = title
 
-          const code = toArray(snippet.body).join('\n')
+          const codeBody = is.fn(snippet.body) ? snippet.body() : snippet.body
+
+          const code = toArray(codeBody).join('\n')
 
           item.insertText = new SnippetString(code)
 

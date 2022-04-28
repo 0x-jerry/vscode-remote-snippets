@@ -1,15 +1,22 @@
-import Ajv, { ValidateFunction } from 'ajv'
+import Ajv, { ValidateFunction, _ } from 'ajv'
 import { getGlobalSnippetSchema } from './chore/get-snippet-schema'
 import {
   RemoteSnippetsConfig,
   SnippetConfig,
-  VscodeSchemasGlobalSnippets,
+  VSCodeSchemasGlobalSnippets,
 } from './types'
 import { fetchJson } from './fetch'
-import { Uri } from 'vscode'
-import { remoteSnippets, remoteSnippetsConfigs } from './configuration'
+import { Uri, workspace } from 'vscode'
+import {
+  localJSConfigs,
+  remoteSnippets,
+  remoteSnippetsConfigs,
+} from './configuration'
 import { RemoteCompletionItemProvider } from './remote-completion'
 import { statusBar } from './statusBar'
+import path from 'path'
+import fs from 'fs-extra'
+import { toArray } from '@0x-jerry/utils'
 
 let validate: ValidateFunction
 
@@ -35,7 +42,7 @@ export async function isValidSnippet(snippet: Record<string, any>) {
 
 export async function fetchSnippet(
   url: string,
-): Promise<false | VscodeSchemasGlobalSnippets> {
+): Promise<false | VSCodeSchemasGlobalSnippets> {
   try {
     const data = await fetchJson(url)
 
@@ -64,13 +71,17 @@ export async function cacheRemoteSnippets(
 
   const allSnippets = [...snippets, ...allConfigs.flat()]
 
-  let progress = 0
-  statusBar.updateProgress(progress, allSnippets.length)
+  const progress = {
+    current: 0,
+    total: allSnippets.length,
+  }
+
+  statusBar.updateProgress(progress.current, progress.total)
   for (const config of allSnippets) {
     const snippet = await fetchSnippet(config.path)
 
-    statusBar.updateProgress(++progress, allSnippets.length)
-    
+    statusBar.updateProgress(++progress.current, progress.total)
+
     if (!snippet) {
       continue
     }
@@ -101,4 +112,37 @@ async function resolveRemoteSnippetConfig(
   }
 
   return snippetConfigs
+}
+
+/**
+ * @todo Watch js files, then re-require the modified js file.
+ * @param provider 
+ * @returns 
+ */
+export async function loadLocalDynamicSnippets(
+  provider: RemoteCompletionItemProvider,
+) {
+  const workspaceUri = workspace.workspaceFolders?.[0].uri
+  if (!workspaceUri) return
+
+  const localJSFiles = localJSConfigs()
+
+  for (const JSFile of localJSFiles) {
+    if (!/\.js$/.test(JSFile)) continue
+
+    const jsPath = path.join(workspaceUri.fsPath, JSFile)
+
+    if (!(await fs.pathExists(jsPath))) {
+      continue
+    }
+
+    delete require.cache[require.resolve(jsPath)]
+
+    const m = require(jsPath)
+    const snippets: VSCodeSchemasGlobalSnippets[] = toArray(m.default || [])
+
+    for (const snippet of snippets) {
+      provider.add(jsPath, snippet)
+    }
+  }
 }

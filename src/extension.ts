@@ -2,7 +2,7 @@ import { commands, ExtensionContext, languages, workspace } from 'vscode'
 import { Commands } from './const'
 import { apiCache } from './fetch'
 import { RemoteCompletionItemProvider } from './remote-completion'
-import { cacheRemoteSnippets } from './snippets'
+import { cacheRemoteSnippets, loadLocalDynamicSnippets } from './snippets'
 import { statusBar } from './statusBar'
 
 export async function activate(context: ExtensionContext) {
@@ -13,6 +13,7 @@ export async function activate(context: ExtensionContext) {
   const provider = new RemoteCompletionItemProvider()
 
   cacheRemoteSnippets(provider)
+  loadLocalDynamicSnippets(provider)
 
   context.subscriptions.push(statusBar.instance)
 
