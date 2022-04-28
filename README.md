@@ -17,8 +17,13 @@ Just add some remote urls to config.
   "remote-snippets.config": [
     "https://raw.githubusercontent.com/0x-jerry/snippets/main/package.json",
   ],
+  "remote-snippets.js": [
+    "snippets/now.js"
+  ],
 }
 ```
+
+About how to use dynamic snippets with `remote-snippets.js`, please see [example](./example).
 
 Then this extension will fetch remote snippets and load it for you.
 
