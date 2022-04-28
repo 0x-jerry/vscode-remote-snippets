@@ -1,3 +1,12 @@
+# [0.3.0](https://github.com/0x-jerry/vscode-remote-snippets/compare/v0.2.2...v0.3.0) (2022-04-28)
+
+
+### Features
+
+* support load local js file ([1e0e35e](https://github.com/0x-jerry/vscode-remote-snippets/commit/1e0e35e65b4abe3e0138ee6e00a46fc2d02f8c85))
+
+
+
 ## [0.2.2](https://github.com/0x-jerry/vscode-remote-snippets/compare/v0.2.1...v0.2.2) (2022-03-20)
 
 
