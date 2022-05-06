@@ -12,8 +12,12 @@ export async function activate(context: ExtensionContext) {
 
   const provider = new RemoteCompletionItemProvider()
 
-  cacheRemoteSnippets(provider)
-  loadLocalDynamicSnippets(provider)
+  const refreshSnippets = () => {
+    cacheRemoteSnippets(provider)
+    loadLocalDynamicSnippets(provider)
+  }
+
+  refreshSnippets()
 
   context.subscriptions.push(statusBar.instance)
 
@@ -33,7 +37,7 @@ export async function activate(context: ExtensionContext) {
       apiCache.clear()
       provider.clear()
 
-      cacheRemoteSnippets(provider)
+      refreshSnippets()
     }),
   )
 
@@ -44,7 +48,7 @@ export async function activate(context: ExtensionContext) {
       }
 
       provider.clear()
-      cacheRemoteSnippets(provider)
+      refreshSnippets()
     }),
   )
 }
