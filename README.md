@@ -2,9 +2,14 @@
 
 Auto fetch snippets from remote and load it.
 
+## Features
+
+- Support remote snippets.
+- Support local dynamic snippets, which can written in JS.
+
 ## Usage
 
-Just add some remote urls to config.
+You may need specify some snippets remote address, It supports a single snippet config, something like `https://raw.githubusercontent.com/hollowtree/vscode-vue-snippets/master/snippets/html.json`, it also supports snippets config, like `https://raw.githubusercontent.com/0x-jerry/snippets/main/package.json`. And the most excited feature, local dynamic snippets.
 
 ```json
 {
@@ -15,18 +20,12 @@ Just add some remote urls to config.
     }
   ],
   "remote-snippets.config": [
-    "https://raw.githubusercontent.com/0x-jerry/snippets/main/package.json",
+    "https://raw.githubusercontent.com/0x-jerry/snippets/main/package.json"
   ],
-  "remote-snippets.js": [
-    "snippets/now.js"
-  ],
+  "remote-snippets.js": ["snippets/now.js"]
 }
 ```
 
-About how to use dynamic snippets with `remote-snippets.js`, please see [example](./example).
+About how to use local dynamic snippets with `remote-snippets.js` configuration item, please see [example](./example).
 
-Then this extension will fetch remote snippets and load it for you.
-
-## How to write remote snippets
-
-Please refer to: https://github.com/0x-jerry/snippets.
+About how to write snippet, please refer to https://code.visualstudio.com/docs/editor/userdefinedsnippets#_snippet-syntax.
