@@ -1,3 +1,12 @@
+## [0.3.1](https://github.com/0x-jerry/vscode-remote-snippets/compare/v0.3.0...v0.3.1) (2022-05-06)
+
+
+### Bug Fixes
+
+* update completion provider when config changed ([7729904](https://github.com/0x-jerry/vscode-remote-snippets/commit/7729904ff4b1d1cf298beab6da444bd2bf4ab528))
+
+
+
 # [0.3.0](https://github.com/0x-jerry/vscode-remote-snippets/compare/v0.2.2...v0.3.0) (2022-04-28)
 
 
