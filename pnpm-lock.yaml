@@ -6,7 +6,7 @@ specifiers:
   '@types/debounce': ^1.2.1
   '@types/debug': ^4.1.7
   '@types/fs-extra': ^9.0.13
-  '@types/node': ^15.14.9
+  '@types/node': ^16.0.0
   '@types/vscode': ^1.41.1
   ajv: ^8.11.0
   axios: ^0.27.2
@@ -27,7 +27,7 @@ devDependencies:
   '@types/debounce': 1.2.1
   '@types/debug': 4.1.7
   '@types/fs-extra': 9.0.13
-  '@types/node': 15.14.9
+  '@types/node': 16.11.41
   '@types/vscode': 1.65.0
   ajv: 8.11.0
   axios: 0.27.2_debug@4.3.4
@@ -139,7 +139,7 @@ packages:
   /@types/fs-extra/9.0.13:
     resolution: {integrity: sha512-nEnwB++1u5lVDM2UI4c1+5R+FYaKfaAzS4OococimjVm3nQw3TuzH5UNsocrcTBbhnerblyHj4A49qXbIiZdpA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npm.taobao.org/@types/fs-extra/-/fs-extra-9.0.13.tgz}
     dependencies:
-      '@types/node': 15.14.9
+      '@types/node': 16.11.41
     dev: true
 
   /@types/minimist/1.2.2:
@@ -150,8 +150,8 @@ packages:
     resolution: {integrity: sha512-iiUgKzV9AuaEkZqkOLDIvlQiL6ltuZd9tGcW3gwpnX8JbuiuhFlEGmmFXEXkN50Cvq7Os88IY2v0dkDqXYWVgA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npm.taobao.org/@types/ms/-/ms-0.7.31.tgz}
     dev: true
 
-  /@types/node/15.14.9:
-    resolution: {integrity: sha512-qjd88DrCxupx/kJD5yQgZdcYKZKSIGBVDIBE1/LTGcNm3d2Np/jxojkdePDdfnBHJc5W7vSMpbJ1aB7p/Py69A==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npm.taobao.org/@types/node/-/node-15.14.9.tgz}
+  /@types/node/16.11.41:
+    resolution: {integrity: sha512-mqoYK2TnVjdkGk8qXAVGc/x9nSaTpSrFaGFm43BUH3IdoBV0nta6hYaGmdOvIMlbHJbUEVen3gvwpwovAZKNdQ==}
     dev: true
 
   /@types/normalize-package-data/2.4.1:
