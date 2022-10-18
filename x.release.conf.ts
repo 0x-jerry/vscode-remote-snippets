@@ -4,8 +4,8 @@ export default defineConfig({
   sequence: [
     "pkg.update.version",
     "npm:changelog",
-    "git.tag",
     "git.commit",
+    "git.tag",
     "git.push",
     "npm:publish"
   ]
