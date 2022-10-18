@@ -5,8 +5,9 @@ import {
   MarkdownString,
   SnippetString,
   TextDocument,
+  window,
 } from 'vscode'
-import { VSCodeSchemasGlobalSnippets } from './types'
+import { SnippetBodyOption, VSCodeSchemasGlobalSnippets } from './types'
 import { is, toArray } from '@0x-jerry/utils'
 
 interface SnippetConfig {
@@ -33,6 +34,14 @@ export class RemoteCompletionItemProvider implements CompletionItemProvider {
 
     const docLang = document.languageId
 
+    const pos = window.activeTextEditor?.selection.active
+    const currentLineText = pos ? document.lineAt(pos).text : ''
+
+    const snippetBodyOption: SnippetBodyOption = {
+      file: document.fileName,
+      text: currentLineText
+    }
+
     for (const conf of this.configs.values()) {
       const list = Object.entries(conf.snippet)
         .filter(([_name, w]) =>
@@ -49,7 +58,9 @@ export class RemoteCompletionItemProvider implements CompletionItemProvider {
 
           item.detail = title
 
-          const codeBody = is.fn(snippet.body) ? snippet.body() : snippet.body
+          const codeBody = is.fn(snippet.body)
+            ? snippet.body(snippetBodyOption)
+            : snippet.body
 
           const code = toArray(codeBody).join('\n')
 

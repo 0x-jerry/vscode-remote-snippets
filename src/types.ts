@@ -7,6 +7,11 @@ export interface VSCodeSchemasGlobalSnippets {
   [k: string]: Snippet
 }
 
+export interface SnippetBodyOption {
+  file: string
+  text: string
+}
+
 export interface Snippet {
   /**
    * The prefix to use when selecting the snippet in intellisense
@@ -15,7 +20,7 @@ export interface Snippet {
   /**
    * Maybe dynamic
    */
-  body: Arrayable<string> | (() => Arrayable<string>)
+  body: Arrayable<string> | ((opt: SnippetBodyOption) => Arrayable<string>)
   /**
    * The snippet description.
    */
