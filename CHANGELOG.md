@@ -1,3 +1,12 @@
+## [0.3.2](https://github.com/0x-jerry/vscode-remote-snippets/compare/v0.3.1...v0.3.2) (2022-10-18)
+
+
+### Features
+
+* support get file name when generate snippet body ([ba87e7b](https://github.com/0x-jerry/vscode-remote-snippets/commit/ba87e7bf66a0217cdba0bce9cfa2d017167ab5b3))
+
+
+
 ## [0.3.1](https://github.com/0x-jerry/vscode-remote-snippets/compare/v0.3.0...v0.3.1) (2022-05-06)
 
 
