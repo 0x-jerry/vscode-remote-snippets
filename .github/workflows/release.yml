@@ -19,3 +19,5 @@ jobs:
 
       - name: Release
         run: npx changelogithub
+        env:
+          GITHUB_TOKEN: ${{github.token}}
