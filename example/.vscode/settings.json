@@ -2,7 +2,7 @@
   "remote-snippets.snippets": [
     {
       "path": "https://raw.githubusercontent.com/hollowtree/vscode-vue-snippets/master/snippets/html.json",
-      "language": "vue"
+      "language": "html,vue"
     }
   ],
   "remote-snippets.config": [

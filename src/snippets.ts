@@ -88,6 +88,8 @@ export async function cacheRemoteSnippets(
 
     provider.add(config.path, snippet, config.language)
   }
+
+  return allSnippets
 }
 
 async function resolveRemoteSnippetConfig(
@@ -116,8 +118,8 @@ async function resolveRemoteSnippetConfig(
 
 /**
  * @todo Watch js files, then re-require the modified js file.
- * @param provider 
- * @returns 
+ * @param provider
+ * @returns
  */
 export async function loadLocalDynamicSnippets(
   provider: RemoteCompletionItemProvider,

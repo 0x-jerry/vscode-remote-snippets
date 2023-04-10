@@ -1,4 +1,10 @@
-import { commands, ExtensionContext, languages, workspace } from 'vscode'
+import {
+  commands,
+  Disposable,
+  ExtensionContext,
+  languages,
+  workspace,
+} from 'vscode'
 import { Commands } from './const'
 import { apiCache } from './fetch'
 import { RemoteCompletionItemProvider } from './remote-completion'
@@ -12,25 +18,35 @@ export async function activate(context: ExtensionContext) {
 
   const provider = new RemoteCompletionItemProvider()
 
-  const refreshSnippets = () => {
-    cacheRemoteSnippets(provider)
-    loadLocalDynamicSnippets(provider)
+  const refreshSnippets = async () => {
+    await cacheRemoteSnippets(provider)
+    await loadLocalDynamicSnippets(provider)
   }
 
-  refreshSnippets()
+  await refreshSnippets()
 
   context.subscriptions.push(statusBar.instance)
 
-  const supportedLang = ['vue', 'typescript', 'javascript', 'markdown']
+  let unregister: Disposable | null = null
 
-  context.subscriptions.push(
-    languages.registerCompletionItemProvider(
+  updateCompletionProviderLanguages()
+
+  function updateCompletionProviderLanguages() {
+    unregister?.dispose()
+
+    const supportedLang = provider.languages
+
+    unregister = languages.registerCompletionItemProvider(
       supportedLang.map((n) => ({
         language: n,
       })),
       provider,
-    ),
-  )
+    )
+  }
+
+  context.subscriptions.push({
+    dispose: () => unregister?.dispose(),
+  })
 
   context.subscriptions.push(
     commands.registerCommand(Commands.Refresh, () => {
@@ -42,18 +58,18 @@ export async function activate(context: ExtensionContext) {
   )
 
   context.subscriptions.push(
-    workspace.onDidChangeConfiguration((e) => {
+    workspace.onDidChangeConfiguration(async (e) => {
       if (!e.affectsConfiguration('remote-snippets')) {
         return
       }
 
       provider.clear()
-      refreshSnippets()
+      await refreshSnippets()
+      updateCompletionProviderLanguages()
     }),
   )
 }
 
 export async function deactivate(): Promise<void> {
   apiCache.saveSync()
-  console.log('deactivate')
 }

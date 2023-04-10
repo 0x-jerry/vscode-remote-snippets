@@ -18,14 +18,33 @@ interface SnippetConfig {
 export class RemoteCompletionItemProvider implements CompletionItemProvider {
   configs = new Map<string, SnippetConfig>()
 
+  #languages = new Set<string>()
+
+  get languages() {
+    return Array.from(this.#languages)
+  }
+
   add(id: string, snippet: VSCodeSchemasGlobalSnippets, language?: string) {
     this.configs.set(id, {
       snippet,
       language,
     })
+
+    Object.values(snippet).forEach((item) => {
+      this.#setLanguages(item.scope)
+    })
+
+    this.#setLanguages(language)
+  }
+
+  #setLanguages(languages?: string) {
+    languages?.split(',').forEach((item) => {
+      this.#languages.add(item.trim())
+    })
   }
 
   clear() {
+    this.#languages.clear()
     this.configs.clear()
   }
 
@@ -39,7 +58,7 @@ export class RemoteCompletionItemProvider implements CompletionItemProvider {
 
     const snippetBodyOption: SnippetBodyOption = {
       file: document.fileName,
-      text: currentLineText
+      text: currentLineText,
     }
 
     for (const conf of this.configs.values()) {
