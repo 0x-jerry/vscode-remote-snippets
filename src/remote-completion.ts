@@ -8,7 +8,7 @@ import {
   window,
 } from 'vscode'
 import { SnippetBodyOption, VSCodeSchemasGlobalSnippets } from './types'
-import { is, toArray } from '@0x-jerry/utils'
+import { isFn, toArray } from '@0x-jerry/utils'
 
 interface SnippetConfig {
   snippet: VSCodeSchemasGlobalSnippets
@@ -77,7 +77,7 @@ export class RemoteCompletionItemProvider implements CompletionItemProvider {
 
           item.detail = title
 
-          const codeBody = is.fn(snippet.body)
+          const codeBody = isFn(snippet.body)
             ? snippet.body(snippetBodyOption)
             : snippet.body
 

@@ -90,6 +90,9 @@
     "publish": "vsce publish --no-dependencies",
     "release": "x-release"
   },
+  "peerDependencies": {
+    "vscode": "*"
+  },
   "devDependencies": {
     "@0x-jerry/utils": "^1.16.2",
     "@0x-jerry/x-release": "^0.3.6",
