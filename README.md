@@ -16,7 +16,7 @@ You may need specify some snippets remote address, It supports a single snippet 
   "remote-snippets.snippets": [
     {
       "path": "https://raw.githubusercontent.com/hollowtree/vscode-vue-snippets/master/snippets/html.json",
-      "language": "vue"
+      "language": "vue,html"
     }
   ],
   "remote-snippets.config": [
