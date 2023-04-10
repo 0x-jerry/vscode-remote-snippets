@@ -1,3 +1,18 @@
+# [0.4.0](https://github.com/0x-jerry/vscode-remote-snippets/compare/v0.3.3...v0.4.0) (2023-04-10)
+
+
+### Bug Fixes
+
+* build process ([dba49b7](https://github.com/0x-jerry/vscode-remote-snippets/commit/dba49b7779f2ecc714830e62f2c3ae6cebb3d977))
+* config property ([5a0fc29](https://github.com/0x-jerry/vscode-remote-snippets/commit/5a0fc29d61c86f731c39334dc5a83607c7c2baa8))
+
+
+### Features
+
+* auto calculate language scope, close [#11](https://github.com/0x-jerry/vscode-remote-snippets/issues/11) ([529a95b](https://github.com/0x-jerry/vscode-remote-snippets/commit/529a95b742edc4031125452ca676260e5a734114))
+
+
+
 ## [0.3.3](https://github.com/0x-jerry/vscode-remote-snippets/compare/v0.3.2...v0.3.3) (2022-10-18)
 
 
