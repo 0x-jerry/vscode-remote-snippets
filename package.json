@@ -41,7 +41,7 @@
           "items": {
             "type": "object",
             "properties": {
-              "url": {
+              "path": {
                 "type": "string",
                 "description": "Remote snippet url."
               },
