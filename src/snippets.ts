@@ -6,7 +6,7 @@ import {
   VSCodeSchemasGlobalSnippets,
 } from './types'
 import { fetchJson } from './fetch'
-import { Uri, workspace } from 'vscode'
+import { Uri, window, workspace } from 'vscode'
 import {
   localJSConfigs,
   remoteSnippets,
@@ -143,12 +143,18 @@ export async function loadLocalDynamicSnippets(
       continue
     }
 
-    const m = load(jsPath)
+    try {
+      const m = load(jsPath)
 
-    const snippets: VSCodeSchemasGlobalSnippets[] = toArray(m.default || [])
+      const snippets: VSCodeSchemasGlobalSnippets[] = toArray(m.default || [])
 
-    for (const snippet of snippets) {
-      provider.add(jsPath, snippet)
+      for (const snippet of snippets) {
+        provider.add(jsPath, snippet)
+      }
+    } catch (error) {
+      window.showWarningMessage(
+        `load snippet [${jsPath}] failed!: ${String(error)}`,
+      )
     }
   }
 }
