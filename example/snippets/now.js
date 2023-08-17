@@ -1,4 +1,4 @@
-exports.default = {
+export default {
   'Get ISO format date-time': {
     scope: 'javascript,typescript',
     prefix: 'now',

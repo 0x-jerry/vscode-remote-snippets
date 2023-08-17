@@ -17,6 +17,7 @@ import { statusBar } from './statusBar'
 import path from 'path'
 import fs from 'fs-extra'
 import { toArray } from '@0x-jerry/utils'
+import jiti from 'jiti'
 
 let validate: ValidateFunction
 
@@ -129,6 +130,8 @@ export async function loadLocalDynamicSnippets(
 
   const localJSFiles = localJSConfigs()
 
+  const load = jiti(process.cwd())
+
   for (const JSFile of localJSFiles) {
     if (!/\.js$/.test(JSFile)) continue
 
@@ -138,9 +141,8 @@ export async function loadLocalDynamicSnippets(
       continue
     }
 
-    delete require.cache[require.resolve(jsPath)]
+    const m = load(jsPath)
 
-    const m = require(jsPath)
     const snippets: VSCodeSchemasGlobalSnippets[] = toArray(m.default || [])
 
     for (const snippet of snippets) {
