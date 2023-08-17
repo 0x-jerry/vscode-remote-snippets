@@ -1,3 +1,18 @@
+## [0.4.1](https://github.com/0x-jerry/vscode-remote-snippets/compare/v0.4.0...v0.4.1) (2023-08-17)
+
+
+### Bug Fixes
+
+* support cjs and esm ([82ef90f](https://github.com/0x-jerry/vscode-remote-snippets/commit/82ef90f47d2ef2254baa4a8963815bfa01f001c6))
+
+
+### Performance Improvements
+
+* catch wrong snippet file ([7167e00](https://github.com/0x-jerry/vscode-remote-snippets/commit/7167e00196ae6571ffba0e0d2d56fb75abc2106e))
+* disable module cache ([3ab6b3b](https://github.com/0x-jerry/vscode-remote-snippets/commit/3ab6b3bc19ebf054dd08141a41d5734fc4168fdd))
+
+
+
 # [0.4.0](https://github.com/0x-jerry/vscode-remote-snippets/compare/v0.3.3...v0.4.0) (2023-04-10)
 
 
