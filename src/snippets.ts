@@ -130,7 +130,9 @@ export async function loadLocalDynamicSnippets(
 
   const localJSFiles = localJSConfigs()
 
-  const load = jiti(process.cwd())
+  const load = jiti(process.cwd(), {
+    cache: false,
+  })
 
   for (const JSFile of localJSFiles) {
     if (!/\.js$/.test(JSFile)) continue
