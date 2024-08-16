@@ -107,7 +107,7 @@
     "@types/fs-extra": "^11.0.1",
     "@types/node": "^20.5.0",
     "@types/vscode": "^1.41.1",
-    "@vscode/vsce": "^2.20.1",
+    "@vscode/vsce": "^3.0.0",
     "ajv": "^8.12.0",
     "axios": "^1.4.0",
     "conventional-changelog-cli": "^4.0.0",
