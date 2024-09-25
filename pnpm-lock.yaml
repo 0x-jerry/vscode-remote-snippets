@@ -51,8 +51,8 @@ devDependencies:
     specifier: ^7.0.1
     version: 7.0.1
   jiti:
-    specifier: ^1.19.1
-    version: 1.19.1
+    specifier: ^2.0.0
+    version: 2.0.0
   tsup:
     specifier: ^8.0.0
     version: 8.0.0(typescript@5.1.6)
@@ -1485,6 +1485,11 @@ packages:
 
   /jiti@1.19.1:
     resolution: {integrity: sha512-oVhqoRDaBXf7sjkll95LHVS6Myyyb1zaunVwk4Z0+WPSW4gjS0pl01zYKHScTuyEhQsFxV5L4DR5r+YqSyqyyg==}
+    hasBin: true
+    dev: true
+
+  /jiti@2.0.0:
+    resolution: {integrity: sha512-CJ7e7Abb779OTRv3lomfp7Mns/Sy1+U4pcAx5VbjxCZD5ZM/VJaXPpPjNKjtSvWQy/H86E49REXR34dl1JEz9w==}
     hasBin: true
     dev: true
 
