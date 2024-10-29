@@ -105,7 +105,7 @@
     "@types/debounce": "^1.2.1",
     "@types/debug": "^4.1.8",
     "@types/fs-extra": "^11.0.1",
-    "@types/node": "^20.5.0",
+    "@types/node": "^22.0.0",
     "@types/vscode": "^1.41.1",
     "@vscode/vsce": "^2.20.1",
     "ajv": "^8.12.0",
