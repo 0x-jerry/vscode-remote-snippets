@@ -6,8 +6,8 @@ settings:
 
 devDependencies:
   '@0x-jerry/utils':
-    specifier: ^2.0.0
-    version: 2.0.0
+    specifier: ^4.0.0
+    version: 4.0.1
   '@0x-jerry/x-release':
     specifier: ^0.4.0
     version: 0.4.0
@@ -66,11 +66,12 @@ packages:
     resolution: {integrity: sha512-aV1qnSbezqlm1M4z+ZjL62p3u5q21986c445KDwJH1zgIErBlefXLf3Tv/Cao8DzA5o2P5iGFpeP2JNjhFRbNQ==}
     dev: true
 
-  /@0x-jerry/utils@2.0.0:
-    resolution: {integrity: sha512-mdpbw3E6kQ8E2PZVfPREdnlA7m3mEsycXYPHvPErrp5lZduqa9ATvqnvInAYUj3u8d9q2Gk2825besoICmyvpQ==}
+  /@0x-jerry/utils@4.0.1:
+    resolution: {integrity: sha512-q//1rKmCtiFTakXQB+9BneZJsEVpK/LLKJ1XRlSfc4DcR92tObay1SNT7luZ47olx+1ofBwoCE99U87xNAH4cA==}
     dependencies:
-      fflate: 0.8.0
-      nanoid: 4.0.2
+      fflate: 0.8.2
+      nanoid: 5.0.9
+      picocolors: 1.1.1
     dev: true
 
   /@0x-jerry/x-release@0.4.0:
@@ -1162,8 +1163,8 @@ packages:
       pend: 1.2.0
     dev: true
 
-  /fflate@0.8.0:
-    resolution: {integrity: sha512-FAdS4qMuFjsJj6XHbBaZeXOgaypXp8iw/Tpyuq/w3XA41jjLHT8NPA+n7czH/DDhdncq0nAyDZmPeWXh2qmdIg==}
+  /fflate@0.8.2:
+    resolution: {integrity: sha512-cPJU47OaAoCbg0pBvzsgpTPhmhqI5eJjh/JIu8tPj5q+T7iLvW/JAYUqmE7KOB4R1ZyEhzBaIQpQpardBF5z8A==}
     dev: true
 
   /fill-range@7.0.1:
@@ -1707,9 +1708,9 @@ packages:
       thenify-all: 1.6.0
     dev: true
 
-  /nanoid@4.0.2:
-    resolution: {integrity: sha512-7ZtY5KTCNheRGfEFxnedV5zFiORN1+Y1N6zvPTnHQd8ENUvfaDBeuJDZb2bN/oXwXxu3qkTXDzy57W5vAmDTBw==}
-    engines: {node: ^14 || ^16 || >=18}
+  /nanoid@5.0.9:
+    resolution: {integrity: sha512-Aooyr6MXU6HpvvWXKoVoXwKMs/KyVakWwg7xQfv5/S/RIgJMy0Ifa45H9qqYy7pTCszrHzP21Uk4PZq2HpEM8Q==}
+    engines: {node: ^18 || >=20}
     hasBin: true
     dev: true
 
@@ -1881,6 +1882,10 @@ packages:
 
   /picocolors@1.0.0:
     resolution: {integrity: sha512-1fygroTLlHu66zi26VoTDv8yRgm0Fccecssto+MhsZ0D/DGW2sm8E8AjW7NU5VVTRt5GxbeZ5qBuJr+HyLYkjQ==}
+    dev: true
+
+  /picocolors@1.1.1:
+    resolution: {integrity: sha512-xceH2snhtb5M9liqDsmEw56le376mTZkEX/jEb/RxNFyegNul7eNslCXP9FDj/Lcu0X8KEyMceP2ntpaHrDEVA==}
     dev: true
 
   /picomatch@2.3.1:
