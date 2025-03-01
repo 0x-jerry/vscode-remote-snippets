@@ -17,7 +17,7 @@
   },
   "publisher": "fantasy",
   "engines": {
-    "vscode": "^1.41.1"
+    "vscode": "^1.97.0"
   },
   "categories": [
     "Snippets"
