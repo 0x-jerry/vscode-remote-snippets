@@ -1,11 +1,11 @@
 import axios from 'axios'
 import { HttpsProxyAgent } from 'https-proxy-agent'
 import { workspace } from 'vscode'
-import { join } from 'path'
-import { homedir } from 'os'
+import { join } from 'node:path'
+import { homedir } from 'node:os'
 import fs from 'fs-extra'
 import { md5 } from './utils'
-import { debounce } from 'debounce'
+import debounce from 'debounce'
 
 function getProxy() {
   const conf = workspace.getConfiguration('http')
@@ -95,6 +95,7 @@ class Cache {
 
 export const apiCache = new Cache()
 
+// biome-ignore lint/suspicious/noExplicitAny: <explanation>
 export async function fetchJson<T = any>(
   url: string,
   cache = true,

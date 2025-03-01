@@ -1,7 +1,7 @@
 import {
   commands,
-  Disposable,
-  ExtensionContext,
+  type Disposable,
+  type ExtensionContext,
   languages,
   workspace,
 } from 'vscode'

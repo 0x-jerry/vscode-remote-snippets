@@ -102,6 +102,7 @@
   "devDependencies": {
     "@0x-jerry/utils": "^4.2.2",
     "@0x-jerry/x-release": "^2.2.2",
+    "@biomejs/biome": "^1.9.4",
     "@types/debounce": "^1.2.4",
     "@types/debug": "^4.1.12",
     "@types/fs-extra": "^11.0.4",

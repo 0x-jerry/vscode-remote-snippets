@@ -1,5 +1,5 @@
 import { workspace } from 'vscode'
-import { SnippetConfig } from './types'
+import type { SnippetConfig } from './types'
 
 function getConf<T>(key: string): T | undefined
 function getConf<T>(key: string, defaultValue: T): T

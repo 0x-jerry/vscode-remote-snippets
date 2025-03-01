@@ -1,6 +1,6 @@
-import Ajv, { ValidateFunction, _ } from 'ajv'
+import Ajv, { type ValidateFunction, _ } from 'ajv'
 import { getGlobalSnippetSchema } from './chore/get-snippet-schema'
-import {
+import type {
   RemoteSnippetsConfig,
   SnippetConfig,
   VSCodeSchemasGlobalSnippets,
@@ -12,21 +12,22 @@ import {
   remoteSnippets,
   remoteSnippetsConfigs,
 } from './configuration'
-import { RemoteCompletionItemProvider } from './remote-completion'
+import type { RemoteCompletionItemProvider } from './remote-completion'
 import { statusBar } from './statusBar'
-import path from 'path'
+import path from 'node:path'
 import fs from 'fs-extra'
-import { toArray } from '@0x-jerry/utils'
+import { ensureArray } from '@0x-jerry/utils'
 import jiti from 'jiti'
 
 let validate: ValidateFunction
 
-export async function isValidSnippet(snippet: Record<string, any>) {
+export async function isValidSnippet(snippet: Record<string, unknown>) {
   if (!validate) {
     const txt = await getGlobalSnippetSchema()
     const schema = JSON.parse(txt)
 
     schema.$id = schema.id
+    // biome-ignore lint/performance/noDelete: <explanation>
     delete schema.id
 
     const ajv = new Ajv({
@@ -146,7 +147,7 @@ export async function loadLocalDynamicSnippets(
     try {
       const m = load(jsPath)
 
-      const snippets: VSCodeSchemasGlobalSnippets[] = toArray(m.default || [])
+      const snippets: VSCodeSchemasGlobalSnippets[] = ensureArray(m.default)
 
       for (const snippet of snippets) {
         provider.add(jsPath, snippet)

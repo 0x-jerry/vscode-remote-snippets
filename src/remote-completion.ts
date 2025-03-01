@@ -1,14 +1,14 @@
 import {
   CompletionItem,
   CompletionItemKind,
-  CompletionItemProvider,
+  type CompletionItemProvider,
   MarkdownString,
   SnippetString,
-  TextDocument,
+  type TextDocument,
   window,
 } from 'vscode'
-import { SnippetBodyOption, VSCodeSchemasGlobalSnippets } from './types'
-import { isFn, toArray } from '@0x-jerry/utils'
+import type { SnippetBodyOption, VSCodeSchemasGlobalSnippets } from './types'
+import { isFn, ensureArray } from '@0x-jerry/utils'
 
 interface SnippetConfig {
   snippet: VSCodeSchemasGlobalSnippets
@@ -30,6 +30,7 @@ export class RemoteCompletionItemProvider implements CompletionItemProvider {
       language,
     })
 
+    // biome-ignore lint/complexity/noForEach: <explanation>
     Object.values(snippet).forEach((item) => {
       this.#setLanguages(item.scope)
     })
@@ -38,6 +39,7 @@ export class RemoteCompletionItemProvider implements CompletionItemProvider {
   }
 
   #setLanguages(languages?: string) {
+    // biome-ignore lint/complexity/noForEach: <explanation>
     languages?.split(',').forEach((item) => {
       this.#languages.add(item.trim())
     })
@@ -67,11 +69,11 @@ export class RemoteCompletionItemProvider implements CompletionItemProvider {
           conf.language
             ? conf.language.includes(docLang)
             : w.scope
-            ? w.scope.includes(docLang)
-            : true,
+              ? w.scope.includes(docLang)
+              : true,
         )
         .map(([title, snippet]) => {
-          const label: string = toArray(snippet.prefix)[0] || title
+          const label: string = ensureArray(snippet.prefix)[0] || title
 
           const item = new CompletionItem(label, CompletionItemKind.Snippet)
 
@@ -81,14 +83,14 @@ export class RemoteCompletionItemProvider implements CompletionItemProvider {
             ? snippet.body(snippetBodyOption)
             : snippet.body
 
-          const code = toArray(codeBody).join('\n')
+          const code = ensureArray(codeBody).join('\n')
 
           item.insertText = new SnippetString(code)
 
           const documentation = [
-            toArray(snippet.description).join('\n') || title,
+            ensureArray(snippet.description).join('\n') || title,
             '',
-            '```' + conf.language,
+            `\`\`\`${conf.language}`,
             code,
             '```',
           ].join('\n')

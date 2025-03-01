@@ -1,4 +1,4 @@
-import { Arrayable } from '@0x-jerry/utils'
+import type { Arrayable } from '@0x-jerry/utils'
 
 /**
  * User snippet configuration
