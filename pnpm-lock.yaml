@@ -9,8 +9,8 @@ importers:
   .:
     devDependencies:
       '@0x-jerry/utils':
-        specifier: ^4.2.2
-        version: 4.2.2
+        specifier: ^5.0.0
+        version: 5.0.0
       '@0x-jerry/x-release':
         specifier: ^2.3.0
         version: 2.3.0
@@ -73,6 +73,9 @@ packages:
 
   '@0x-jerry/utils@4.2.2':
     resolution: {integrity: sha512-5msyxVu5P0R9zKkdGE98jRCEQuriOif3xG1LOC30o+qjIqJN8mU5wM+uOocjCuA5ke0WVgqo24nZHwTWunivJg==}
+
+  '@0x-jerry/utils@5.0.0':
+    resolution: {integrity: sha512-F3TnKTJrCRCKe9FG0eWEVlgYDFusC6p0hePjyR7mKAgGj61/4lScng7Dj/ss2Fo2zJvH8qWv2G7fSvW45n7fQQ==}
 
   '@0x-jerry/x-release@2.3.0':
     resolution: {integrity: sha512-qP8jD8iXQ2nAVBZ5yax0yRBjp5VR4xaC55LC9mpEGkUqy3PUriD/bYKZ/16dwFCGv85Fpw3KOnbLb3Fk/oWnDA==}
@@ -1722,6 +1725,12 @@ snapshots:
   '@0x-jerry/load-pkg@0.1.5': {}
 
   '@0x-jerry/utils@4.2.2':
+    dependencies:
+      fflate: 0.8.2
+      nanoid: 5.1.2
+      picocolors: 1.1.1
+
+  '@0x-jerry/utils@5.0.0':
     dependencies:
       fflate: 0.8.2
       nanoid: 5.1.2
