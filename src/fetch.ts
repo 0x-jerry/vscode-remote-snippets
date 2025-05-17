@@ -1,11 +1,11 @@
+import { homedir } from 'node:os'
+import { join } from 'node:path'
 import axios from 'axios'
+import debounce from 'debounce'
+import fs from 'fs-extra'
 import { HttpsProxyAgent } from 'https-proxy-agent'
 import { workspace } from 'vscode'
-import { join } from 'node:path'
-import { homedir } from 'node:os'
-import fs from 'fs-extra'
 import { md5 } from './utils'
-import debounce from 'debounce'
 
 function getProxy() {
   const conf = workspace.getConfiguration('http')

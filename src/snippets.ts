@@ -1,23 +1,23 @@
+import path from 'node:path'
+import { ensureArray } from '@0x-jerry/utils'
 import Ajv, { type ValidateFunction, _ } from 'ajv'
-import { getGlobalSnippetSchema } from './chore/get-snippet-schema'
-import type {
-  RemoteSnippetsConfig,
-  SnippetConfig,
-  VSCodeSchemasGlobalSnippets,
-} from './types'
-import { fetchJson } from './fetch'
+import fs from 'fs-extra'
+import jiti from 'jiti'
 import { Uri, window, workspace } from 'vscode'
+import { getGlobalSnippetSchema } from './chore/get-snippet-schema'
 import {
   localJSConfigs,
   remoteSnippets,
   remoteSnippetsConfigs,
 } from './configuration'
+import { fetchJson } from './fetch'
 import type { RemoteCompletionItemProvider } from './remote-completion'
 import { statusBar } from './statusBar'
-import path from 'node:path'
-import fs from 'fs-extra'
-import { ensureArray } from '@0x-jerry/utils'
-import jiti from 'jiti'
+import type {
+  RemoteSnippetsConfig,
+  SnippetConfig,
+  VSCodeSchemasGlobalSnippets,
+} from './types'
 
 let validate: ValidateFunction
 

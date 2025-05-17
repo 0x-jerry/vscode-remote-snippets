@@ -1,4 +1,4 @@
-import { workspace, Uri } from 'vscode'
+import { Uri, workspace } from 'vscode'
 
 /**
  * Inspired by

@@ -1,3 +1,4 @@
+import { ensureArray, isFn } from '@0x-jerry/utils'
 import {
   CompletionItem,
   CompletionItemKind,
@@ -8,7 +9,6 @@ import {
   window,
 } from 'vscode'
 import type { SnippetBodyOption, VSCodeSchemasGlobalSnippets } from './types'
-import { isFn, ensureArray } from '@0x-jerry/utils'
 
 interface SnippetConfig {
   snippet: VSCodeSchemasGlobalSnippets

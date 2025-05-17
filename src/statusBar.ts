@@ -1,10 +1,7 @@
-import { window, StatusBarAlignment } from 'vscode'
+import { StatusBarAlignment, window } from 'vscode'
 import { Commands } from './const'
 
-const instance = window.createStatusBarItem(
-  StatusBarAlignment.Right,
-  1000,
-)
+const instance = window.createStatusBarItem(StatusBarAlignment.Right, 1000)
 
 export const statusBar = {
   instance: instance,
