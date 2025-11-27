@@ -84,7 +84,7 @@
   },
   "scripts": {
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r",
-    "vscode:prepublish": "tsup src/extension.ts --sourcemap",
+    "vscode:prepublish": "tsup",
     "build": "tsup",
     "dev": "tsup --watch",
     "publish": "vsce publish --no-dependencies",
@@ -94,6 +94,10 @@
     "entry": [
       "src/extension.ts"
     ],
+    "format": [
+      "cjs"
+    ],
+    "clean": true,
     "sourcemap": true,
     "external": [
       "vscode"

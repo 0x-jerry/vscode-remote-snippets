@@ -2,7 +2,7 @@ import path from 'node:path'
 import { ensureArray } from '@0x-jerry/utils'
 import Ajv, { type ValidateFunction } from 'ajv'
 import fs from 'fs-extra'
-import jiti from 'jiti'
+import { createJiti } from 'jiti'
 import { Uri, window, workspace } from 'vscode'
 import { getGlobalSnippetSchema } from './chore/get-snippet-schema'
 import {
@@ -130,8 +130,9 @@ export async function loadLocalDynamicSnippets(
 
   const localJSFiles = localJSConfigs()
 
-  const load = jiti(process.cwd(), {
-    cache: false,
+  const jiti = createJiti(__filename, {
+    moduleCache: false,
+    fsCache: false,
   })
 
   for (const JSFile of localJSFiles) {
@@ -144,14 +145,16 @@ export async function loadLocalDynamicSnippets(
     }
 
     try {
-      const m = load(jsPath)
+      const m: any = await jiti.import(jsPath)
 
-      const snippets: VSCodeSchemasGlobalSnippets[] = ensureArray(m.default)
+      const snippets: VSCodeSchemasGlobalSnippets[] = ensureArray(m)
 
       for (const snippet of snippets) {
         provider.add(jsPath, snippet)
       }
     } catch (error) {
+      console.error(error)
+
       window.showWarningMessage(
         `load snippet [${jsPath}] failed!: ${String(error)}`,
       )
