@@ -1,6 +1,6 @@
 import path from 'node:path'
 import { ensureArray } from '@0x-jerry/utils'
-import Ajv, { type ValidateFunction, _ } from 'ajv'
+import Ajv, { type ValidateFunction } from 'ajv'
 import fs from 'fs-extra'
 import jiti from 'jiti'
 import { Uri, window, workspace } from 'vscode'
@@ -27,7 +27,6 @@ export async function isValidSnippet(snippet: Record<string, unknown>) {
     const schema = JSON.parse(txt)
 
     schema.$id = schema.id
-    // biome-ignore lint/performance/noDelete: <explanation>
     delete schema.id
 
     const ajv = new Ajv({

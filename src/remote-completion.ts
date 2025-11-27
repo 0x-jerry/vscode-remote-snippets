@@ -30,7 +30,6 @@ export class RemoteCompletionItemProvider implements CompletionItemProvider {
       language,
     })
 
-    // biome-ignore lint/complexity/noForEach: <explanation>
     Object.values(snippet).forEach((item) => {
       this.#setLanguages(item.scope)
     })
@@ -39,7 +38,6 @@ export class RemoteCompletionItemProvider implements CompletionItemProvider {
   }
 
   #setLanguages(languages?: string) {
-    // biome-ignore lint/complexity/noForEach: <explanation>
     languages?.split(',').forEach((item) => {
       this.#languages.add(item.trim())
     })

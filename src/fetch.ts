@@ -36,7 +36,7 @@ class Cache {
 
       try {
         this.conf = await fs.readJson(this.confPath)
-      } catch (error) {
+      } catch (_error) {
         this.conf = {}
       }
     }
@@ -95,7 +95,6 @@ class Cache {
 
 export const apiCache = new Cache()
 
-// biome-ignore lint/suspicious/noExplicitAny: <explanation>
 export async function fetchJson<T = any>(
   url: string,
   cache = true,
