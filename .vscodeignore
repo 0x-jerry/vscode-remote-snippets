@@ -1,0 +1,13 @@
+.github/**
+.vscode/**
+src/**
+example/**
+node_modules/**
+**/*.map
+.editorconfig
+.gitignore
+.oxfmtrc.json
+bun.lock
+tsconfig.json
+tsdown.config.ts
+release.conf.ts
