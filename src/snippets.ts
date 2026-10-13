@@ -11,6 +11,7 @@ import {
   remoteSnippetsConfigs,
 } from './configuration'
 import { fetchJson } from './fetch'
+import { log } from './log'
 import type { RemoteCompletionItemProvider } from './remote-completion'
 import { statusBar } from './statusBar'
 import type {
@@ -48,12 +49,13 @@ export async function fetchSnippet(
     const data = await fetchJson(url)
 
     if (!(await isValidSnippet(data))) {
+      log.warn(`invalid snippet schema: ${url}`)
       return false
     }
 
     return data
   } catch (error) {
-    console.warn(error)
+    log.warn(`fetch snippet failed: ${url}`, error)
     return false
   }
 }
@@ -72,6 +74,8 @@ export async function cacheRemoteSnippets(
 
   const allSnippets = [...snippets, ...allConfigs.flat()]
 
+  log.info(`fetching ${allSnippets.length} snippet(s)`)
+
   const progress = {
     current: 0,
     total: allSnippets.length,
@@ -88,6 +92,7 @@ export async function cacheRemoteSnippets(
     }
 
     provider.add(config.path, snippet, config.language)
+    log.debug(`loaded snippet: ${config.path}`)
   }
 
   return allSnippets
@@ -152,8 +157,10 @@ export async function loadLocalDynamicSnippets(
       for (const snippet of snippets) {
         provider.add(jsPath, snippet)
       }
+
+      log.debug(`loaded ${snippets.length} local snippet(s) from: ${jsPath}`)
     } catch (error) {
-      console.error(error)
+      log.error(`load snippet [${jsPath}] failed!`, error)
 
       window.showWarningMessage(
         `load snippet [${jsPath}] failed!: ${String(error)}`,

@@ -5,6 +5,7 @@ import debounce from 'debounce'
 import fs from 'fs-extra'
 import { HttpsProxyAgent } from 'https-proxy-agent'
 import { workspace } from 'vscode'
+import { log } from './log'
 import { md5 } from './utils'
 
 function getProxy() {
@@ -104,6 +105,7 @@ export async function fetchJson<T = any>(
   if (cache && apiCache.has(url)) {
     const data = await apiCache.get(url)
 
+    log.debug(`cache hit: ${url}`)
     return data
   }
 
@@ -113,6 +115,7 @@ export async function fetchJson<T = any>(
   })
 
   apiCache.set(url, JSON.stringify(data))
+  log.debug(`fetched: ${url}`)
 
   return data
 }
