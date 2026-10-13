@@ -150,7 +150,7 @@ export async function loadLocalDynamicSnippets(
     }
 
     try {
-      const m: any = await jiti.import(jsPath)
+      const m: any = await jiti.import(jsPath, { default: true })
 
       const snippets: VSCodeSchemasGlobalSnippets[] = ensureArray(m)
 
