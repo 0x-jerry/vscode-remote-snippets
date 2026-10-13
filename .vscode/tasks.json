@@ -2,10 +2,11 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "type": "npm",
+      "type": "shell",
+      "command": "bun run dev",
       "isBackground": true,
       "problemMatcher": {
-        "owner": "tsup",
+        "owner": "tsdown",
         "fileLocation": "relative",
         "pattern": {
           "regexp": "^error|warning|info",
@@ -18,12 +19,11 @@
         "background": {
           "activeOnStart": true,
           "beginsPattern": ".+ Build start .+",
-          "endsPattern": ".+ Build success in .+"
+          "endsPattern": ".+(Build complete in|Rebuilt in) .+"
         }
       },
-      "script": "dev",
-      "label": "npm: dev",
-      "detail": "tsup src/extension.ts --sourcemap --watch"
+      "label": "bun: dev",
+      "detail": "tsdown --watch"
     }
   ]
 }

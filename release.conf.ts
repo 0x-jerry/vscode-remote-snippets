@@ -4,6 +4,6 @@ export default defineConfig({
   publish: false,
   tasks: [
     //
-    'npm run publish',
+    'bun run publish',
   ],
 })

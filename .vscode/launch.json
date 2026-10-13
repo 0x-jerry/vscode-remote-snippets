@@ -16,7 +16,7 @@
         "${workspaceFolder}/example"
       ],
       "outFiles": ["${workspaceFolder}/dist/**/*.js"],
-      "preLaunchTask": "npm: dev",
+      "preLaunchTask": "bun: dev",
       "env": {
         "DEBUG": "vscode-remote-snippets:*",
         "NODE_ENV": "development"

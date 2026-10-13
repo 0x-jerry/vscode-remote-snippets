@@ -130,7 +130,7 @@ export async function loadLocalDynamicSnippets(
 
   const localJSFiles = localJSConfigs()
 
-  const jiti = createJiti(__filename, {
+  const jiti = createJiti(import.meta.url, {
     moduleCache: false,
     fsCache: false,
   })
